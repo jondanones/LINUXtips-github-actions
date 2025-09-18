@@ -38,7 +38,7 @@ jobs:
         run: |
           COVERAGE=$(npx nyc report --reporter=text-summary | grep -oP 'Statements\s*:\s*\K[0-9\.]+(?=%)' | head -1)
           echo "Coverage: $COVERAGE%"
-          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT"
+          echo "coverage=$COVERAGE" >> "$GITHUB_OUTPUT"
 
       - name: "Valida se a cobertura está acima do mínimo esperado"
         if: ${{ steps.coverage.output.coverage < env.COVERAGE_MIN }}
